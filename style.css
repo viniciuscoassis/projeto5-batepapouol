@@ -69,24 +69,105 @@ input{
 }
 
 .mensagem{
-    padding: 15px 3px;
+    padding: 17px 3px;
     display: flex;
+    display: inline-block;
+    font-size: 14px;
+    
+    
 
 }
-.container-mensagem em{
-    margin-left: 7px;
+.container-mensagem{
+    margin-bottom: 5px;
+    border-radius: 5px;
 }
 
 .fluxo{
     background-color: #DCDCDC;
 }
+
 .horario{
     color: #AAAAAA;
+    margin: 0 10px;
 }
 .usuario{
 font-weight: 700;
 
 } 
+.todos{
+    background-color: #FFFFFF;
+}
+.reservadamente{
+    background-color: #FFDEDE;
+}
+.some{
+    opacity: 0;
+}
+.none{
+    display: none;
+}
+.overlay{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100% ;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+.participantesAtivos{
+    position: fixed;
+    right: 0;
+    top:0;
+    height: 100%;
+    background-color: white;
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    
+}
+.participantesAtivos h1{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
 
+}
+.participantesAtivos span{
+    font-size: 14px;
+}
+.menuOverlay {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.menuOverlay span{
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    
 
+}
+.menuOverlay ion-icon{
+margin-bottom: 10px;
+font-size: 30px;
+display: flex;
+align-items: center;
+}
+
+.menuOverlay > span > span{
+    font-weight: 400;
+    font-size: 19px;
+    margin-left: 10px;
+   
+}
+.spacer40{
+    height: 40px;
+}
+.check{
+    color: #28BB25;
+    position: fixed;
+    right: 20px;
+    
+}
 
