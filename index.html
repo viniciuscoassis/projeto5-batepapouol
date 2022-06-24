@@ -42,39 +42,39 @@
   <ion-icon name="people"></ion-icon>
 </div>
 
-<div class="chat">
+<ul class="chat">
 
-<div class="container-mensagem fluxo">
+<li class="container-mensagem fluxo">
   <span class="mensagem">
 <em class="horario">(23:49:09) </em> <em class="usuario"> Joao </em> <em class="acaoFluxo">entra na sala...</em>
 </span>
-</div>
+</li>
 
-<div class="container-mensagem todos">
+<li class="container-mensagem todos">
   <span class="mensagem">
 <em class="horario">(23:49:09) </em> <em class="usuario"> Joao </em> <em>para </em> <em class="usuario"> Maria </em>: <em class="mensagemEnviada">Bom dia</em>
 </span>
-</div>
+</li>
 
-<div class="container-mensagem todos">
+<li class="container-mensagem todos">
   <span class="mensagem">
 <em class="horario">(23:49:09) </em> <em class="usuario"> Maria </em> <em>para </em> <em class="usuario"> Joao </em>: <em class="mensagemEnviada">Oi João :)</em>
 </span>
-</div>
+</li>
 
-<div class="container-mensagem reservadamente">
+<li class="container-mensagem reservadamente">
   <span class="mensagem">
 <em class="horario">(23:49:09) </em> <em class="usuario remetente"> Joao </em> <em class="modoMensagem">reservadamente para </em> <em class="usuario destinatario"> Maria </em>: <em class="mensagemEnviada">Oi gatinha quer tc? </em>
   </span>
-</div>
+</li>
 
-<div class="container-mensagem fluxo">
+<li class="container-mensagem fluxo">
   <span class="mensagem">
 <em class="horario">(23:49:09) </em> <em class="usuario "> Maria </em> <em class="acaoFluxo">sai da sala...</em>
 </span>
-</div>
+</li>
 
-</div>
+</ul>
 
 <div class="menu-inferior">
 
@@ -87,7 +87,8 @@
 </div>
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="scripts.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
