@@ -11,7 +11,7 @@
 
   <body>
 
-<div class="overlay some">
+<div class="overlay none">
 <div class="participantesAtivos">
 
   <h1>Escolha um contato
@@ -78,12 +78,15 @@
 
 <div class="menu-inferior">
 
-  <form method="GET">
-  <input type="text" placeholder="Escreva aqui..." name="name"></input>
+  <input 
+  type="text" 
+  placeholder="Escreva aqui..." 
+  class="mensagemASerEnviada">
 
-</form>
+</input>
 
-  <ion-icon name="paper-plane-outline"></ion-icon>
+
+  <ion-icon name="paper-plane-outline" onclick="enviarMensagem()"></ion-icon>
 </div>
 
 

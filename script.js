@@ -1,5 +1,4 @@
 
-
 let nomeDigitado;
 
   nomeDigitado = prompt("Digite seu lindo nome");
@@ -15,11 +14,9 @@ promisse.then(entrarNoChat);
 setInterval(manterConectado,5000);
 function manterConectado(){
     let manter = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeDigitado);
-    manter.then(mensagemSucesso);
-    manter.catch(mensagemErro);
+
+    manter.catch(saiuDaSala); 
 }
-
-
 
 // verificando horário atual
 let dataAtual = new Date();
@@ -42,13 +39,49 @@ chat.innerHTML+=
 `
 }
 
+// buscando as mensagens
+function buscarMensagens(){
+    let promisseMensagens = axios.get('http://mock-api.driven.com.br/api/v6/uol/messages');
+
+    promisseMensagens.then(mensagemSucesso);
+    promisseMensagens.catch(mensagemErro);
+}
+
+function saiuDaSala(){
+    chat.innerHTML+= 
+`
+<li class="container-mensagem fluxo">
+<span class="mensagem">
+<em class="horario">(${horas}:${minutos}:${segundos}) </em> <em class="usuario"> ${nomeDigitado.name} </em> <em class="acaoFluxo">saiu da sala...</em>
+</span>
+</li>
+`
+}
+// postar mensagens
+let objetoEnviado;
+function enviarMensagem(){
+    let input = document.querySelector(".mensagemASerEnviada");
+    let mensagemEnviada = input.value;
+
+    objetoEnviado = {
+        from: nomeDigitado.name,
+        to: "Todos",
+        text: mensagemEnviada,
+        type: "message"
+    }
+    let promisseMensagemEnviada = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",objetoEnviado);
+    promisseMensagemEnviada.then(mensagemSucesso);
+    promisseMensagemEnviada.catch(mensagemErro);
+
+}
+
 function mensagemErro(erro){
 
-    console.log("ahhh n foi");
+    console.log("ahhh n deu pra enviar a mensagens");
     console.log(`erro foi: ${erro}`);
 }
 function mensagemSucesso(exito){
 
-    console.log("ta funcionando");
+    console.log("deu certo de enviar as mensagens");
     console.log(`o retorno foi: ${exito}`);
 }
