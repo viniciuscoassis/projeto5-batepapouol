@@ -1,22 +1,30 @@
-
 let nomeDigitado;
 
-  nomeDigitado = prompt("Digite seu lindo nome");
-  nomeDigitado = {name: nomeDigitado};
+pedirNome();
 
-let promisse = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeDigitado)
+function pedirNome(){
+    nomeDigitado = {name: prompt("Digite seu lindo nome")};
+    postarNome();
+}
+function postarNome(){
+    let promisseNome = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeDigitado);
+    promisseNome.catch(tratarErroNome);
+    promisseNome.then(entrarNoChat);
+}
 
-promisse.catch(mensagemErro);
-promisse.then(entrarNoChat);
+function tratarErroNome(erro){
+    if(erro.response.status == 400){
+        pedirNome();
+    }
+}
 
 
 // Verificar se continua online
-setInterval(manterConectado,5000);
-function manterConectado(){
-    let manter = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeDigitado);
-
-    manter.catch(saiuDaSala); 
-}
+// setInterval(manterConectado,5000);
+// function manterConectado(){
+//     let manter = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeDigitado);
+//     manter.catch(saiuDaSala); 
+// }
 
 // verificando horário atual
 let dataAtual = new Date();
@@ -36,16 +44,9 @@ chat.innerHTML+=
 <em class="horario">(${horas}:${minutos}:${segundos}) </em> <em class="usuario"> ${nomeDigitado.name} </em> <em class="acaoFluxo">entra na sala...</em>
 </span>
 </li>
-`
+`;
 }
 
-// buscando as mensagens
-function buscarMensagens(){
-    let promisseMensagens = axios.get('http://mock-api.driven.com.br/api/v6/uol/messages');
-
-    promisseMensagens.then(mensagemSucesso);
-    promisseMensagens.catch(mensagemErro);
-}
 
 function saiuDaSala(){
     chat.innerHTML+= 
@@ -70,18 +71,15 @@ function enviarMensagem(){
         type: "message"
     }
     let promisseMensagemEnviada = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",objetoEnviado);
-    promisseMensagemEnviada.then(mensagemSucesso);
-    promisseMensagemEnviada.catch(mensagemErro);
 
 }
 
-function mensagemErro(erro){
-
-    console.log("ahhh n deu pra enviar a mensagens");
-    console.log(`erro foi: ${erro}`);
+function mensagemExitoNome(exito){
+    console.log("Deu certo de postar nome");
+    console.log(exito);
 }
-function mensagemSucesso(exito){
 
-    console.log("deu certo de enviar as mensagens");
-    console.log(`o retorno foi: ${exito}`);
+function mensagemErroNome(erro){
+    console.log("Não deu certo de postar nome");
+    console.log(erro);
 }
