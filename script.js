@@ -1,8 +1,14 @@
+let chat = document.querySelector("ul");
 pegarMensagens();
+
 
 function pegarMensagens(){
     let promomissePegarMensagens = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
     promomissePegarMensagens.then(carregarMensagens);
+    let todasMensagens = chat.querySelectorAll("li");
+    let t = todasMensagens.length-1;
+    todasMensagens[t].scrollIntoView();
+    
 }
 
 let nomeDigitado;
@@ -40,7 +46,7 @@ let minutos = dataAtual.getMinutes();
 let segundos = dataAtual.getSeconds();
 
 // mensagem de status de fluxo
-let chat = document.querySelector("ul");
+
 
 function entrarNoChat(){
 
@@ -82,7 +88,7 @@ function enviarMensagem(){
     promisseMensagemEnviada.catch(refrescoPagina);
 }
 // deixar mais dinamico
-setInterval(pegarMensagens,3000)
+setInterval(pegarMensagens,2000)
 
 function refrescoPagina(){
     window.location.reload();
@@ -114,10 +120,6 @@ for (let i=0; i< mensagens.length; i++){
       </span>
       </li>
       `;
-      if (i == mensagens.length-1){
-        chat.querySelectorAll("li")[99].scrollIntoView();
-    }
-
     }
     else if (mensagens[i].type == "status" && mensagens[i].to == "Todos"){
         chat.innerHTML += 
@@ -127,13 +129,16 @@ for (let i=0; i< mensagens.length; i++){
       <em class="horario">(${mensagens[i].time}) </em> <em class="usuario "> ${mensagens[i].from} </em> <em class="mensagem">${mensagens[i].text}</em>
       </span>
       </li> `;
-
     }
+   else if (mensagens[i].type == "private_message" && nomeDigitado == mensagens[i].to){
+`<li class="container-mensagem reservadamente">
+<span class="mensagem">
+<em class="horario">(${mensagens[i].time}) </em> <em class="usuario remetente"> ${mensagens[i].from} </em> <em class="modoMensagem">reservadamente para </em> <em class="usuario destinatario"> ${mensagens[i].to} </em>: <em class="mensagemEnviada">${mensagens[i].text} </em>
+</span>
+</li>`
+   }
 
-    if (i == mensagens.length-1){
-        chat.querySelectorAll("li")[99].scrollIntoView();
-    }
-
+    
     
    // mensagem privada
 }

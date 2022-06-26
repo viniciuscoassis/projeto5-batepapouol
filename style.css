@@ -58,6 +58,7 @@ input{
     font-size: 24px;
     font-weight: 400;
     font-style: italic;
+    outline: none;
 }
 
 .menu-inferior ion-icon{
@@ -80,9 +81,7 @@ input{
     margin-bottom: 5px;
     border-radius: 5px;
 }
-.mensagem em{
-line-height: 10px;
-}
+
 .red {
     background-color: red;
     color:red;
