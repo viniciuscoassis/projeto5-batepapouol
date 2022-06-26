@@ -126,9 +126,10 @@ for (let i=0; i< mensagens.length; i++){
         
         `<li class="container-mensagem fluxo">
         <span class="mensagem">
-      <em class="horario">(${mensagens[i].time}) </em> <em class="usuario "> ${mensagens[i].from} </em> <em class="mensagem">${mensagens[i].text}</em>
+      <em class="horario">(${mensagens[i].time}) </em> <em class="usuario "> ${mensagens[i].from} </em> <em class="acaoFluxo">${mensagens[i].text}</em>
       </span>
       </li> `;
+
     }
    else if (mensagens[i].type == "private_message" && nomeDigitado == mensagens[i].to){
 `<li class="container-mensagem reservadamente">
