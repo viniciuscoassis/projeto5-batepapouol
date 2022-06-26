@@ -74,13 +74,18 @@ input{
     display: flex;
     display: inline-block;
     font-size: 14px;
-    
-    
 
 }
 .container-mensagem{
     margin-bottom: 5px;
     border-radius: 5px;
+}
+.mensagem em{
+line-height: 10px;
+}
+.red {
+    background-color: red;
+    color:red;
 }
 
 .fluxo{
